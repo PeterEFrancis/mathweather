@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>Math Weather</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <!-- jQuery library -->
@@ -15,22 +16,51 @@
   <script src="scripts.js"></script>
   <link rel="stylesheet" href="styles.css">
 
+
+  <!-- for the gauge -->
+  <link rel="stylesheet" type="text/css" href="material-gauge.css">
+  <script src="material-gauge.js"></script>
+  <script>
+  var gauge = new Gauge(document.getElementById("gauge"));
+
+  gauge.value(grade);
+  </script>
+
 </head>
 
 <body onload="loadWeather(17325)"> <!-- Harrisburg id=5192726 -->
 <div class="container">
   <div class="row">
+    <br>
     <div class="jumbotron">
-
+      <h1 id="grade"></h1>
     </div>
   </div>
   <div class="row">
-    <div class="col-md-9">
-      <h1>Math Weather</h1>
-      <p>Want to know whether to start proving a theorem or go outside?<br>Look no further. </p>
+    <div class="col-md-8">
+      <h2>Math Weather</h2>
+      <p>Want to know whether to start proving a theorem or go outside?<br><em>Look no further</em>. </p>
+
+
+      <div class="gauge gauge--liveupdate center-block" id="gauge" style="margin-top:100px;">
+        	<div class="gauge__container">
+        		<div class="gauge__marker"></div>
+        		<div class="gauge__background"></div>
+        		<div class="gauge__center"></div>
+        		<div class="gauge__data"></div>
+        		<div class="gauge__needle"></div>
+        	</div>
+        	<div class="gauge__labels mdl-typography__headline">
+            	<span class="gauge__label--low">Bad</span>
+            	<span class="gauge__label--spacer"></span>
+            	<span class="gauge__label--high">Good</span>
+        	</div>
+    	</div>
+
+
     </div>
-    <div class="col-md-3">
-      <input id="zipCodeInput" placeholder="Zip Code"/>
+    <div class="col-sm-4">
+      <input id="zipCodeInput" placeholder="Zip Code" style="margin:20px"/>
       <button type="button" id="submitZip" onclick="loadWeather(document.getElementById('zipCodeInput').value);">Search</button>
       <img id="icon" class="center-block"/>
       <div class="outline space">
@@ -39,7 +69,7 @@
     </div>
   </div>
 </div>
-
+<br><br><bR>
 
 
 
