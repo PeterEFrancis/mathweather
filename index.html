@@ -24,7 +24,7 @@
 
 
     function loadWeather(){
-        $.getJSON("https://api.openweathermap.org/data/2.5/weather?id=5192726&APPID=f617b6cb95e94d59d5cc345b892aaabf",function(json){
+        $.getJSON("https://api.openweathermap.org/data/2.5/weather?id=5192726&units=imperial&APPID=f617b6cb95e94d59d5cc345b892aaabf",function(json){
 
           document.getElementById("out").innerHTML = strDict(json, 0);
 
