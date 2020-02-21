@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Math Weather</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&amp;display=swap" rel="stylesheet">
+
+  <!-- Local files -->
+  <script src="scripts.js"></script>
+  <link rel="stylesheet" href="styles.css">
+
+</head>
+
+<body onload="loadEmbed(17325)" style="padding:10px;"> <!-- Harrisburg id=5192726 -->
+    <img id="icon" style="width:100px;"/>
+    <h1 id="grade"></h1>
+    <h2 id="place"></h2>
+    <input id="zipCodeInput" placeholder="Zip Code" style="margin:20px"/>
+    <button type="button" id="submitZip" onclick="loadEmbed(document.getElementById('zipCodeInput').value);">Search</button>
+
+</body>
+</html>
