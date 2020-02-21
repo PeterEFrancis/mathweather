@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Weather</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script>
+    function strDict(input, depth) {
+      stringOut = "";
+
+      if (typeof input != 'object') {
+        stringOut +=  "<strong>" + input + "</strong>";
+      }
+
+      else {
+        stringOut += "<ul>";
+        for (var key in input) {
+          stringOut += "<li>" + key + ": " + strDict(input[key], depth + 1) + "</li>";
+        }
+        stringOut += "</ul>";
+      }
+
+      return stringOut;
+    }
+
+
+    function loadWeather(){
+        $.getJSON("http://api.openweathermap.org/data/2.5/weather?id=5192726&APPID=f617b6cb95e94d59d5cc345b892aaabf",function(json){
+
+          document.getElementById("out").innerHTML = strDict(json, 0);
+
+          console.log(JSON.stringify(json));
+
+        });
+    }
+    </script>
+</head>
+<body onload="loadWeather()">
+
+  <p id="out">
+
+  </p>
+</body>
+</html>
