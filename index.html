@@ -70,8 +70,28 @@
 
     </div>
     <div class="col-sm-4">
+      <!-- Trigger the modal with a button -->
+      <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal" style="position: absolute; right:20px">Get Embed Code</button><br><br>
+
+      <!-- Modal -->
+      <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Copy Embed Code</h4>
+            </div>
+            <div class="modal-body">
+              <textarea style="width:100%"><iframe src="https://francisp336.github.io/mathweather/embed.html" width="400px" height="320px"></iframe></textarea>
+            </div>
+          </div>
+
+        </div>
+      </div>
       <input id="zipCodeInput" placeholder="Zip Code" style="margin:20px"/>
-      <button type="button" id="submitZip" onclick="loadWeather(document.getElementById('zipCodeInput').value);">Search</button>
+      <button class="btn btn-default" type="button" id="submitZip" onclick="loadWeather(document.getElementById('zipCodeInput').value);">Search</button>
       <div class="outline space">
         <p id="raw_data"></p>
       </div>
