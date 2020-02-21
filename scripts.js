@@ -114,10 +114,13 @@ function loadWeather(zipCode){
         str += hour + " " + ampm;
         str += "</div>";
 
+
         last_day = day;
 
-
       }
+
+      str += "<br><br><hr>";
+
       document.getElementById("forecast").innerHTML = str;
 
     });
