@@ -12,3 +12,12 @@
 .space {
   padding: 10px;
 }
+
+
+.small {
+  size: 10pt;
+}
+
+.less_space {
+  padding: 0px;
+}

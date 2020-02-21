@@ -83,14 +83,41 @@ function loadWeather(zipCode){
 
 
     $.getJSON("https://api.openweathermap.org/data/2.5/forecast?zip=" + zipCode + "&units=imperial&appid=f617b6cb95e94d59d5cc345b892aaabf",function(json){
-      str = "<ul class=\"list-group center-block\" style=\"max-width:280px;\">";
-      for (lst in json["list"]) {
-        str += "<li class=\"list-group-item\">"
-        + json["list"][lst]["dt_txt"]
-        + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
-        + "<strong>" + ("" + calculateGrade(json["list"][lst])).substring(0,4) + " % </strong></li>";
+
+      months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "Novemeber", "December"];
+
+      last_day = 0;
+
+      str = "";
+
+      for (i in json["list"]) {
+
+        dt = json["list"][i]["dt_txt"];
+        year = dt.substring(0,4);
+        month = dt.substring(5,7);
+        day = dt.substring(8,10);
+        hour = parseInt(dt.substring(11, 13));
+        ampm = hour >= 12 ? "pm" : "am";
+        hour = hour > 12 ? hour % 12 : hour;
+        hour = hour == 0 ? 12 : hour;
+
+        // console.log(year, month, day, hour, ampm);
+
+        if (day != last_day) {
+          str += "</div>";
+          str += "<h5>" + months[month - 1] + " " + day + ", " + year + "</h5>";
+          str += "<div class=\"row\">";
+          str += "<div class=\"col-xs-2\"></div>";
+        }
+        str += "<div class=\"col-xs-1 less_space\">";
+        str += "<strong class=\"small\">" + ("" + calculateGrade(json["list"][i])).substring(0,4) + " % </strong><br>";
+        str += hour + " " + ampm;
+        str += "</div>";
+
+        last_day = day;
+
+
       }
-      str += "</ul>"
       document.getElementById("forecast").innerHTML = str;
 
     });
