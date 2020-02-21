@@ -1,0 +1,14 @@
+* {
+  font-family: "Roboto";
+}
+
+
+.outline {
+  background-color: white;
+  border: 1px black solid;
+}
+
+
+.space {
+  padding: 5px;
+}
