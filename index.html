@@ -31,11 +31,17 @@
 <body onload="loadWeather(17325)"> <!-- Harrisburg id=5192726 -->
 <div class="container">
   <div class="row">
-    <br>
-    <div class="jumbotron">
-      <h1 id="grade"></h1>
-      <h2 id="place"></h2>
-      <h4 id="advice"></h4>
+    <div class="jumbotron" style="margin: 20px;">
+      <div class="row">
+        <div class="col-sm-10">
+          <h1 id="grade"></h1>
+          <h2 id="place"></h2>
+          <h4 id="advice"></h4>
+        </div>
+        <div class="col-xs-2">
+          <img id="icon" class="center-block" style="width:100%; max-width: 200px; min-width: 100px;"/>
+        </div>
+      </div>
     </div>
   </div>
   <div class="row">
@@ -66,7 +72,6 @@
     <div class="col-sm-4">
       <input id="zipCodeInput" placeholder="Zip Code" style="margin:20px"/>
       <button type="button" id="submitZip" onclick="loadWeather(document.getElementById('zipCodeInput').value);">Search</button>
-      <img id="icon" class="center-block"/>
       <div class="outline space">
         <p id="raw_data"></p>
       </div>

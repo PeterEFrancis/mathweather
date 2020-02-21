@@ -105,7 +105,7 @@ function loadWeather(zipCode){
 
         if (day != last_day) {
           str += "</div>";
-          str += "<h5>" + months[month - 1] + " " + day + ", " + year + "</h5>";
+          str += "<hr><h5>" + months[month - 1] + " " + day + ", " + year + "</h5>";
           str += "<div class=\"row\">";
           str += "<div class=\"col-xs-2\"></div>";
         }
@@ -121,6 +121,5 @@ function loadWeather(zipCode){
       document.getElementById("forecast").innerHTML = str;
 
     });
-
 
 }
