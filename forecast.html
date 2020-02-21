@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="scripts.js"></script>
+
+    <script>
+    $.getJSON("https://api.openweathermap.org/data/2.5/forecast?zip=17325&units=imperial&appid=f617b6cb95e94d59d5cc345b892aaabf",function(json){
+      document.getElementById("out").innerHTML = strDict(json);
+      });
+
+  </script>
+  </head>
+  <body>
+<p id="out"></p>
+  </body>
+</html>
