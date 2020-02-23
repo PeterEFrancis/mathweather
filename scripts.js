@@ -113,11 +113,11 @@ function loadWeather(zipCode){
         if (day != last_day) {
           str += "</div>";
           str += "<hr><h5>" + months[month - 1] + " " + day + ", " + year + "</h5>";
-          str += "<div class=\"row\">";
-          str += "<div class=\"col-xs-2\"></div>";
+          str += "<div class=\"row small\">";
+          str += "<div class=\"col-xs-3\"></div>";
         }
         str += "<div class=\"col-xs-1 less_space\">";
-        str += "<strong class=\"small\">" + ("" + calculateGrade(json["list"][i])).substring(0,4) + " % </strong><br>";
+        str += "<strong>" + ("" + calculateGrade(json["list"][i])).substring(0,4) + " % </strong><br>";
         str += hour + " " + ampm;
         str += "</div>";
 
@@ -126,7 +126,7 @@ function loadWeather(zipCode){
 
       }
 
-      str += "<br><br><hr>";
+      str += "<br><br><br><hr>";
 
       document.getElementById("forecast").innerHTML = str;
 
