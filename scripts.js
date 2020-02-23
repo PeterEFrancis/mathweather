@@ -138,6 +138,7 @@ function loadWeather(zipCode){
 
 
 function loadEmbed(zipCode){
+  try {
     $.getJSON("https://api.openweathermap.org/data/2.5/weather?zip=" + zipCode + "&units=imperial&APPID=f617b6cb95e94d59d5cc345b892aaabf",function(json){
 
       document.getElementById("icon").src = "https://openweathermap.org/img/wn/" + json["weather"][0]["icon"] + "@2x.png"
@@ -148,5 +149,9 @@ function loadEmbed(zipCode){
       document.getElementById("place").innerHTML = json["name"];
 
     });
+    }
+    catch (err) {
+      document.getElementById("grade").innerHTML = "Disable adblocker to allow this plugin -PEF";
 
+    }
 }
