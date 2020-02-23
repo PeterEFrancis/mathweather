@@ -144,7 +144,7 @@ function loadEmbed(zipCode){
 
       grade = calculateGrade(json);
 
-      document.getElementById("grade").innerHTML = "Math Weather: <strong>" + ("" + grade).substring(0,4) + "%</strong>";
+      document.getElementById("grade").innerHTML = ("" + grade).substring(0,4) + "%</strong>";
       document.getElementById("place").innerHTML = json["name"];
 
     });
