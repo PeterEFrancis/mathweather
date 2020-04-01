@@ -37,7 +37,9 @@ function calculateGrade(json) {
 
   grade = ((3 * num / 8) + (3 * clouds / 8) + (3 * (100 - temp) / 16) + (humidity / 16));
 
-  return grade;
+  // for covid-19 
+  return 100 // grade;
+
 }
 
 
@@ -61,6 +63,7 @@ function loadWeather(zipCode){
       document.getElementById("grade").innerHTML = ("" + grade).substring(0,4) + "%";
       document.getElementById("place").innerHTML = json["name"];
 
+
       advice = "";
       if (grade < 20) {
         advice = "Not looking too great for math today.";
@@ -76,6 +79,9 @@ function loadWeather(zipCode){
       }
       else if (grade < 100) {
         advice = "Get inside right now and solve the 3n+1 problem!";
+      }
+      else if (grade == 100) {
+        advice = "Social distancing + stay at home order = perfect math conditions"
       }
       else {
         advice = "This is probably a mistake. If not a volcano is probably erupting...";
