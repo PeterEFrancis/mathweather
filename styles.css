@@ -1,5 +1,10 @@
+
 * {
   font-family: "Roboto";
+}
+
+body {
+  min-width: 310px;
 }
 
 
@@ -18,11 +23,17 @@
   size: 9pt;
 }
 
-.less_space {
-  padding: 0px;
-}
-
 
 .verticalLine {
   border-left: 1px solid #EEEEEE;
+}
+
+
+.col-xs-1_8 {
+  width: 12.5%;
+  padding: 0px 2px;
+}
+
+.day {
+  margin-bottom: 20px;
 }

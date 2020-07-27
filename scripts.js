@@ -1,6 +1,5 @@
 
 
-
 function strDict(input) {
   stringOut = "";
 
@@ -37,17 +36,17 @@ function calculateGrade(json) {
 
   grade = ((3 * num / 8) + (3 * clouds / 8) + (3 * (100 - temp) / 16) + (humidity / 16));
 
-  // for covid-19 
-  return 100 // grade;
+  return grade;
 
 }
 
 
 
+const MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "Novemeber", "December"];
 
 function loadWeather(zipCode){
     $.getJSON("https://api.openweathermap.org/data/2.5/weather?zip=" + zipCode + "&units=imperial&APPID=f617b6cb95e94d59d5cc345b892aaabf",function(json){
-      str = ""
+      var str = ""
       for (var key in json) {
         str += "<h4><u>" + key + "</u></h4>";
         str += strDict(json[key]);
@@ -57,34 +56,26 @@ function loadWeather(zipCode){
       document.getElementById("icon").src = "https://openweathermap.org/img/wn/" + json["weather"][0]["icon"] + "@2x.png"
       console.log(JSON.stringify(json));
 
-      grade = calculateGrade(json);
+      var grade = calculateGrade(json);
 
       console.log("grade: " + grade)
       document.getElementById("grade").innerHTML = ("" + grade).substring(0,4) + "%";
       document.getElementById("place").innerHTML = json["name"];
 
 
-      advice = "";
+      var advice = "";
       if (grade < 20) {
         advice = "Not looking too great for math today.";
-      }
-      else if (grade < 40) {
+      } else if (grade < 40) {
         advice = "Mehhhh.....";
-      }
-      else if (grade < 60) {
+      } else if (grade < 60) {
         advice = "That fair... maybe some claculus?";
-      }
-      else if (grade < 80) {
+      } else if (grade < 80) {
         advice = "It's lookin' mighty fine for math today!";
-      }
-      else if (grade < 100) {
+      } else if (grade < 100) {
         advice = "Get inside right now and solve the 3n+1 problem!";
-      }
-      else if (grade == 100) {
-        advice = "Social distancing + stay at home order = perfect math conditions"
-      }
-      else {
-        advice = "This is probably a mistake. If not a volcano is probably erupting...";
+      } else {
+        advice = "This is probably a mistake. If not, a volcano is probably erupting...";
       }
       document.getElementById("advice").innerHTML = advice;
 
@@ -97,34 +88,36 @@ function loadWeather(zipCode){
 
     $.getJSON("https://api.openweathermap.org/data/2.5/forecast?zip=" + zipCode + "&units=imperial&appid=f617b6cb95e94d59d5cc345b892aaabf",function(json){
 
-      months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "Novemeber", "December"];
 
-      last_day = 0;
+      var last_day = 0;
 
-      str = "";
+      var str = "";
 
       for (i in json["list"]) {
 
-        dt = json["list"][i]["dt_txt"];
-        year = dt.substring(0,4);
-        month = dt.substring(5,7);
-        day = dt.substring(8,10);
-        hour = parseInt(dt.substring(11, 13));
-        ampm = hour >= 12 ? "pm" : "am";
-        hour = hour > 12 ? hour % 12 : hour;
+        var dt = json["list"][i]["dt_txt"];
+        var year = dt.substring(0,4);
+        var month = dt.substring(5,7);
+        var day = dt.substring(8,10);
+        var hour24 = parseInt(dt.substring(11, 13));
+        var ampm = hour24 >= 12 ? "pm" : "am";
+        var hour = hour24 > 12 ? hour24 % 12 : hour24;
         hour = hour == 0 ? 12 : hour;
 
         // console.log(year, month, day, hour, ampm);
 
         if (day != last_day) {
           str += "</div>";
-          str += "<hr><h5>" + months[month - 1] + " " + day + ", " + year + "</h5>";
+          str += "<hr><h5 class=\"day\">" + MONTHS[month - 1] + " " + day + ", " + year + "</h5>";
           str += "<div class=\"row small\">";
-          str += "<div class=\"col-xs-3\"></div>";
+          for (var j = 0; j < hour24; j += 3) {
+            str += "<div class=\"col-xs-1 col-xs-1_8\"></div>";
+          }
+          // str += "<div class=\"col-xs-3\"></div>";
         }
-        str += "<div class=\"col-xs-1 less_space\">";
-        str += "<strong>" + ("" + calculateGrade(json["list"][i])).substring(0,4) + " % </strong><br>";
-        str += hour + " " + ampm;
+        str += "<div class=\"col-xs-1 col-xs-1_8\">";
+        str += "<center><strong>" + ("" + calculateGrade(json["list"][i])).substring(0,4) + "</strong><br>";
+        str += hour + " " + ampm + "</center>";
         str += "</div>";
 
 

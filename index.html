@@ -21,94 +21,97 @@
 
   <!-- for the gauge -->
   <link rel="stylesheet" type="text/css" href="material-gauge.css">
-  <script src="material-gauge.js"></script>
-  <script>
-  var gauge = new Gauge(document.getElementById("gauge"));
 
-  gauge.value(grade);
-  </script>
 
 </head>
 
 <body onload="loadWeather(17325)"> <!-- Harrisburg id=5192726 -->
-<div class="container">
-  <div class="row">
-    <div class="jumbotron" style="margin: 20px;">
-      <div class="row">
-        <div class="col-sm-10">
-          <h1 id="grade"></h1>
-          <h2 id="place"></h2>
-          <h4 id="advice"></h4>
-        </div>
-        <div class="col-xs-2">
-          <img id="icon" class="center-block" style="width:100%; max-width: 200px; min-width: 100px;"/>
+  <div class="container">
+    <div class="row">
+      <div class="jumbotron" style="margin: 20px;">
+        <div class="row">
+          <div class="col-xs-8">
+            <h1 id="grade"></h1>
+            <h2 id="place"></h2>
+            <h4 id="advice"></h4>
+          </div>
+          <div class="col-xs-4">
+            <img id="icon" class="center-block" style="width:100%; max-width: 125px; background-color: white; border-radius: 10px;"/>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-md-8">
-      <h2>Math Weather</h2>
-      <p>Want to know whether to start proving a theorem or go outside?<br><em>Look no further</em>. </p>
+    <div class="row">
+      <div class="col-md-8">
+        <h2>Math Weather</h2>
+        <p>Want to know whether to start proving a theorem or go outside?<br><em>Look no further</em>. </p>
 
 
-      <div class="gauge gauge--liveupdate center-block" id="gauge" style="margin-top:100px;">
-        	<div class="gauge__container">
-        		<div class="gauge__marker"></div>
-        		<div class="gauge__background"></div>
-        		<div class="gauge__center"></div>
-        		<div class="gauge__data"></div>
-        		<div class="gauge__needle"></div>
-        	</div>
-        	<div class="gauge__labels mdl-typography__headline">
-            	<span class="gauge__label--low">Bad</span>
-            	<span class="gauge__label--spacer"></span>
-            	<span class="gauge__label--high">Good</span>
-        	</div>
-    	</div>
-      <h2>Forecast</h2>
-      <div class="container-fluid" id="forecast">
+        <div class="gauge gauge--liveupdate center-block" id="gauge" style="margin-top:100px;">
+          	<div class="gauge__container">
+          		<div class="gauge__marker"></div>
+          		<div class="gauge__background"></div>
+          		<div class="gauge__center"></div>
+          		<div class="gauge__data"></div>
+          		<div class="gauge__needle"></div>
+          	</div>
+          	<div class="gauge__labels mdl-typography__headline">
+              	<span class="gauge__label--low">Bad</span>
+              	<span class="gauge__label--spacer"></span>
+              	<span class="gauge__label--high">Good</span>
+          	</div>
+      	</div>
+        <h2>Forecast</h2>
+        <div class="container-fluid" id="forecast" style="padding: 0px;"></div>
+
       </div>
+      <div class="col-md-4">
+        <div class="text-right">
+          <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal" style="margin-bottom: 20px">Get Embed Code</button>
+        </div>
 
-    </div>
-    <div class="col-sm-4">
-      <!-- Trigger the modal with a button -->
-      <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal" style="position: absolute; right:20px">Get Embed Code</button><br><br>
-
-      <!-- Modal -->
-      <div id="myModal" class="modal fade" role="dialog">
-        <div class="modal-dialog">
-
-          <!-- Modal content-->
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal">&times;</button>
-              <h4 class="modal-title">Copy Embed Code</h4>
-            </div>
-            <div class="modal-body">
-              <textarea style="width:100%; resize: none; height:100px;"><iframe src="https://mathweather.live/embed.html" style="width:130px;height:200px; border:1px solid black"></iframe></textarea>
+        <div id="myModal" class="modal fade" role="dialog">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Copy Embed Code</h4>
+              </div>
+              <div class="modal-body">
+                <textarea style="width:100%; resize: none; height:100px;"><iframe src="https://mathweather.live/embed.html" style="width:130px; height:200px; border:1px solid black"></iframe></textarea>
+              </div>
             </div>
           </div>
-
         </div>
-      </div>
-      <input id="zipCodeInput" placeholder="Zip Code" style="margin:20px"/>
-      <button class="btn btn-default" type="button" id="submitZip" onclick="loadWeather(document.getElementById('zipCodeInput').value);">Search</button>
-      <div class="verticalLine space">
-        <p id="raw_data"></p>
+
+        <div class="input-group" style="margin-bottom: 20px">
+          <input id="zipCodeInput" placeholder="Zip Code" class="form-control"/>
+          <div class="input-group-btn">
+            <button class="btn btn-default" type="button" id="submitZip" onclick="loadWeather(document.getElementById('zipCodeInput').value);">Search</button>
+          </div>
+        </div>
+
+        <div class="verticalLine">
+          <p id="raw_data" style="margin-left:20px;"></p>
+        </div>
       </div>
     </div>
   </div>
-</div>
-<br><br><bR>
-<p class="text-center">
-          &#169; 2020 <a href="https://PeterEFrancis.com" target="_blank"><u>Peter E. Francis<u></a>
-        </p>
-  
-  <Br>
+  <br><br><bR>
+  <p class="text-center">&#169; 2020 <a href="https://PeterEFrancis.com" target="_blank"><u>Peter E. Francis<u></a></p>
+
+    <Br>
 
 
 
 
 </body>
+
+<script src="material-gauge.js"></script>
+<script>
+  var gauge = new Gauge(document.getElementById("gauge"));
+
+  gauge.value(grade);
+</script>
+
 </html>
