@@ -31,10 +31,10 @@
 
 </head>
 
-<body onload="loadWeather(17325)"> <!-- Harrisburg id=5192726 -->
+<body onload="initialize()"> <!-- Harrisburg id=5192726 -->
   <div class="container">
     <div class="row">
-      <div class="jumbotron" style="margin: 20px;">
+      <div class="jumbotron" style="margin-top: 20px;">
         <div class="row">
           <div class="col-xs-8">
             <h1 id="grade"></h1>
@@ -118,6 +118,36 @@
   var gauge = new Gauge(document.getElementById("gauge"));
 
   gauge.value(grade);
+
+
+
+  function initialize() {
+    loading();
+    var zip = 17325;
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        function(position) {
+          var link = 'http://api.geonames.org/findNearbyPostalCodesJSON?lat=' + position.coords.latitude + '&lng=' + position.coords.longitude + '&username=peterefrancis';
+          $.get(link, function(pc) {
+            loadWeather(pc.postalCodes[0].postalCode);
+          });
+        },
+        function(e) {
+          console.log(e);
+          loadWeather(zip);
+      });
+
+    } else {
+      loadWeather(zip);
+    }
+
+
+
+  }
+
+
+
+
 </script>
 
 </html>

@@ -154,3 +154,15 @@ function loadEmbed(zipCode){
 
     }
 }
+
+
+
+
+
+function loading() {
+  document.getElementById("icon").src = "--.png";
+  document.getElementById("grade").innerHTML = "--.-%";
+  document.getElementById("place").innerHTML = "Loading";
+  document.getElementById("advice").innerHTML = "...";
+
+}
