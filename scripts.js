@@ -69,7 +69,7 @@ function loadWeather(zipCode){
       } else if (grade < 40) {
         advice = "Mehhhh.....";
       } else if (grade < 60) {
-        advice = "That fair... maybe some claculus?";
+        advice = "That fair... maybe some calculus?";
       } else if (grade < 80) {
         advice = "It's lookin' mighty fine for math today!";
       } else if (grade < 100) {
